@@ -1,0 +1,42 @@
+<br>
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+  <li>
+  <h2><%= bookmark.movie.title %></h2>
+  <%= bookmark.comment %>
+  <%= link_to 'delete this comment', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: 'Are you sure? OK BRO'} %>
+  </li>
+  <% end %>
+</ul>
+<br>
+<%= link_to 'add bookmark', new_list_bookmark_path(@list) %>
+<br>
+<%= link_to 'back to lists', lists_path %>
+
+
+
+
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("<%= !list.movies.first.nil? ? list.movies.first.poster_url : 'https://unsplash.com/photos/movie-clapper-on-wooden-background-3d-illustration-LqjwbiEK9Y0' %>">
+    <div class="container">
+      <h1>Save any kind of movies</h1>
+      <p>classic</p>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="cards">
+  <% @lists.each do |list| %>
+  <div class="card-category">
+  <%= link_to list.name, list_path(list) %>
+  <div class="card-trip">
+    <img src="<%= !list.movies.first.nil? ? list.movies.first.poster_url : 'https://unsplash.com/photos/movie-clapper-on-wooden-background-3d-illustration-LqjwbiEK9Y0' %>" alt="idk" >
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= list.name %></h2>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% end %>
+  </div>
+</div>
